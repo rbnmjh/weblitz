@@ -159,32 +159,22 @@ class AdminController extends Controller {
     if ($this->checkLogin()) {
       $criteria = new CDbCriteria();
       $criteria->order = 'id DESC';
-      $item_count =32;
-      $page_size =5;
       $count=Portfolio::model()->count($criteria);
       $pages=new CPagination($count);
       
          // results per page
       $pages->pageSize=2;
       $pages->applyLimit($criteria);
-      $end =($pages->offset+$pages->limit <= $item_count ? $pages->offset+$pages->limit : $item_count);
-
-    $sample =range($pages->offset+1, $end);
-
       $models = Portfolio::model()->findAll($criteria);
       $this->render('listPortfolio', array(
-         'portfolio' => $models,
-         //'page_size'=>$page_size,
+         'portfolio' => $models,         
          'pages' => $pages,
-         'sample'=>$sample,
+         'row_count' => $pages->pageSize,
+         'current_page' => $pages->currentPage
       )); 
-}
- else{
+    }else{
          $this->redirect(Yii::app()->request->baseUrl . '/admin/login');
       }
-    //$portfolio = Portfolio::model()->findAll();
-    //$data['portfolio'] = $portfolio;
-    //$this->render('listPortfolio',$data);
   }
 
   public function actionDeletePortfolio($id) {
@@ -299,9 +289,28 @@ class AdminController extends Controller {
   }
 
   public function actionListPages(){
-    $page = Pages::model()->findAll();
-    $data['page'] = $page;
-    $this->render('listPages',$data);
+    if ($this->checkLogin()) {
+      $criteria = new CDbCriteria();
+      $criteria->order = 'id DESC';
+      $count=Pages::model()->count($criteria);
+      $pages=new CPagination($count);
+      
+         // results per page
+      $pages->pageSize=2;
+      $pages->applyLimit($criteria);
+      $models = Pages::model()->findAll($criteria);
+      $this->render('listPages', array(
+         'page' => $models,         
+         'pages' => $pages,
+         'row_count' => $pages->pageSize,
+         'current_page' => $pages->currentPage
+      )); 
+    }else{
+         $this->redirect(Yii::app()->request->baseUrl . '/admin/login');
+    }
+    //$page = Pages::model()->findAll();
+    //$data['page'] = $page;
+    //$this->render('listPages',$data);
   }
 
   public function actionDeletePages($id) {
@@ -409,9 +418,25 @@ class AdminController extends Controller {
   }
 
   public function actionListTestimonial(){
-    $testimonial = Testimonial::model()->findAll();
-    $data['testimonial'] = $testimonial;
-    $this->render('listTestimonial',$data);
+    if ($this->checkLogin()) {
+      $criteria = new CDbCriteria();
+      $criteria->order = 'id DESC';
+      $count=Testimonial::model()->count($criteria);
+      $pages=new CPagination($count);
+      
+         // results per page
+      $pages->pageSize=2;
+      $pages->applyLimit($criteria);
+      $models = Testimonial::model()->findAll($criteria);
+      $this->render('listTestimonial', array(
+         'testimonial' => $models,         
+         'pages' => $pages,
+         'row_count' => $pages->pageSize,
+         'current_page' => $pages->currentPage
+      )); 
+    }else{
+         $this->redirect(Yii::app()->request->baseUrl . '/admin/login');
+    }
   }
 
   public function actionDeleteTestimonial($id) {
@@ -522,9 +547,25 @@ class AdminController extends Controller {
   }
 
   public function actionListOurTeam(){
-    $ourteam = Ourteam::model()->findAll();
-    $data['ourteam'] = $ourteam;
-    $this->render('listOurTeam',$data);
+    if ($this->checkLogin()) {
+      $criteria = new CDbCriteria();
+      $criteria->order = 'id DESC';
+      $count=Ourteam::model()->count($criteria);
+      $pages=new CPagination($count);
+      
+         // results per page
+      $pages->pageSize=2;
+      $pages->applyLimit($criteria);
+      $models = Ourteam::model()->findAll($criteria);
+      $this->render('listOurTeam', array(
+         'ourteam' => $models,         
+         'pages' => $pages,
+         'row_count' => $pages->pageSize,
+         'current_page' => $pages->currentPage
+      )); 
+    }else{
+         $this->redirect(Yii::app()->request->baseUrl . '/admin/login');
+    }
   }
 
   public function actionDeleteOurTeam($id) {
@@ -599,6 +640,8 @@ class AdminController extends Controller {
     $sitesetting = new Sitesetting();
     $data['sitesetting'] = $sitesetting;
      if(isset($_POST['Sitesetting'])){
+      print_r($_POST['Sitesetting']);
+      die();
       $sitesetting = new Sitesetting();      
       $sitesetting->attributes = $_POST['Sitesetting'];            
         if($sitesetting->save()){           
@@ -616,9 +659,25 @@ class AdminController extends Controller {
   }
 
   public function actionListSiteSetting(){
-    $sitesetting = Sitesetting::model()->findAll();
-    $data['sitesetting'] = $sitesetting;
-    $this->render('listSiteSetting',$data);
+    if ($this->checkLogin()) {
+      $criteria = new CDbCriteria();
+      $criteria->order = 'id DESC';
+      $count=Sitesetting::model()->count($criteria);
+      $pages=new CPagination($count);
+      
+         // results per page
+      $pages->pageSize=2;
+      $pages->applyLimit($criteria);
+      $models = Sitesetting::model()->findAll($criteria);
+      $this->render('listSiteSetting', array(
+         'sitesetting' => $models,         
+         'pages' => $pages,
+         'row_count' => $pages->pageSize,
+         'current_page' => $pages->currentPage
+      )); 
+    }else{
+         $this->redirect(Yii::app()->request->baseUrl . '/admin/login');
+    }
   }
 
   public function actionDeleteSiteSetting($id){
@@ -683,9 +742,25 @@ class AdminController extends Controller {
   }
 
   public function actionListContactUs(){
-    $contactus = Contactus::model()->findAll();
-    $data['contactus'] = $contactus;
-    $this->render('listContactUs',$data);
+    if ($this->checkLogin()) {
+      $criteria = new CDbCriteria();
+      $criteria->order = 'id DESC';
+      $count=Contactus::model()->count($criteria);
+      $pages=new CPagination($count);
+      
+         // results per page
+      $pages->pageSize=2;
+      $pages->applyLimit($criteria);
+      $models = Contactus::model()->findAll($criteria);
+      $this->render('listContactUs', array(
+         'contactus' => $models,         
+         'pages' => $pages,
+         'row_count' => $pages->pageSize,
+         'current_page' => $pages->currentPage
+      )); 
+    }else{
+         $this->redirect(Yii::app()->request->baseUrl . '/admin/login');
+    }
   }
 
   public function actionDeleteContactUs($id){

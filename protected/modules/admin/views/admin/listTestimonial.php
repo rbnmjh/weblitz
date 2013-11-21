@@ -20,15 +20,20 @@
                      <th align="left" width="90">Action</th>
                   </tr>
                   <?php 
-                     $count = 1;
+                     $count = $row_count*$current_page+1;
                      foreach($testimonial as $item){
                   ?>
                   <tr>
-                     <td align="center"><?php echo $count++; ?></td>
+                     <td align="center"><?php echo $count; ?></td>
                      <td><?php echo $item->name; ?></td>
                      <td><?php echo $item->company; ?></td>
-                     <td><a href="<?php echo Yii::app()->request->baseUrl.'/uploads/testimonial/'.$item->image; ?>" data-lightbox="image-1">
-                        <?php echo CHtml::image(Yii::app()->baseUrl .'/uploads/testimonial/admin-thumbs/'.$item->image, 'testimonial')?></a></td>
+                     <td>
+                        <?php if($item->image!=''){?>
+                           <a href="<?php echo Yii::app()->request->baseUrl.'/uploads/testimonial/'.$item->image; ?>" data-lightbox="image-1">
+                              <?php echo CHtml::image(Yii::app()->baseUrl .'/uploads/testimonial/admin-thumbs/'.$item->image, 'testimonial')?>
+                           </a>
+                        <?php }?>
+                     </td>
                      <td><?php echo $item->message; ?></td>
                      <td>
                         <a href="<?php echo Yii::app()->request->baseUrl.'/admin/editTestimonial/'.$item->id; ?>">Edit</a>&nbsp; &nbsp;
@@ -36,11 +41,11 @@
                       
                      </td>
                   </tr>
-                  <?php } ?>
+                  <?php $count++;} ?>
                   <tr>
-                     <td colspan="5"> <?php $this->widget('CLinkPager'/*, array(
-    'pages' => $pages,
-)*/) ?></td>
+                     <td colspan="5"> <?php $this->widget('CLinkPager', array(
+                           'pages' => $pages,)) ?>
+                     </td>
                      <td>
                         <a href="<?php echo Yii::app()->request->baseUrl ?>/admin/addTestimonial">
                            <strong>Add New</strong>

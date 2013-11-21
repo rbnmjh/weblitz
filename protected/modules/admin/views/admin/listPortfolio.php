@@ -21,11 +21,11 @@
                      <th align="left" width="90">Action</th>
                   </tr>
                   <?php 
-                     $count = 1;
+                     $count = $row_count*$current_page+1;
                      foreach($portfolio as $item){
                   ?>
                   <tr>
-                     <td align="center"><?php echo $count++; ?></td>
+                     <td align="center"><?php echo $count; ?></td>
                      <td><?php echo $item->name; ?></td>
                      <td><a href="<?php echo Yii::app()->request->baseUrl.'/uploads/portfolio/'.$item->image; ?>" data-lightbox="image-1" >
                             <?php echo CHtml::image(Yii::app()->baseUrl .'/uploads/portfolio/admin-thumbs/'.$item->image, 'portfolio')  ?></a></td>
@@ -41,15 +41,12 @@
                       
                      </td>
                   </tr>
-                  <?php } ?>
+                  <?php $count++;} ?>
                   <tr>
                      <td colspan="6"> <?php $this->widget('CLinkPager', array(
                           'pages' => $pages,
-                          'maxButtonCount'=>2,   
-                      )) ;
-                      /*$this->widget('CListPager', array(
-                        'pages'=>$pages,
-                      ));*/?>
+                          'maxButtonCount'=>5,   
+                      )) ;?>
                      </td>
                      <td>
                         <a href="<?php echo Yii::app()->request->baseUrl ?>/admin/addPortfolio">
