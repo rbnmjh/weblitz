@@ -1,0 +1,98 @@
+/* @group Horizontal Menu */
+
+#horiz-menu {
+	height: 29px;
+	float:left;
+	/*border-top:1px solid #FFFFFF;
+	border-bottom:1px solid #FFFFFF;*/
+}
+
+#horiz-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 0px;
+	
+}
+
+#horiz-menu li {
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	/*border-right:1px solid #FFFFFF;*/
+	white-space:nowrap;
+	background:transparent url(../images/nav_li_bg.gif) no-repeat scroll 100% 50%;
+	position:relative;
+}
+
+#horiz-menu li span {
+	display: block;
+	float: left;
+}
+
+#horiz-menu a {
+	color:#ffffff;
+
+	display: block;
+	float: left;
+	height: 29px;
+	line-height: 2.2em;
+	padding: 0 8px; /*top individual menu inter-distance*/
+	font-size: 1.0em;
+	text-decoration:none;
+}
+
+#horiz-menu li li a {
+	font-size: 1.0em;
+}
+
+#horiz-menu a:hover {
+	text-decoration: none;
+}
+
+#horiz-menu li:hover,
+#horiz-menu li.sfHover {
+	/*background: none;	*/
+}
+
+/* @end */
+
+
+/* menu stuff */
+
+#horiz-menu li li {	border-bottom: 1px solid #9BD73E;}
+#horiz-menu li.active a {	
+	background: url(../images/activemenubg.gif) 50% 0 no-repeat;	
+	color:#FFFFFF;}
+
+#horiz-menu li:hover a,
+#horiz-menu li.sfHover a {
+	background: url(../images/activemenubg.gif) 0 0 repeat-x;
+	color: #fff;
+}
+#horiz-menu li:hover span.topdaddy,
+#horiz-menu li.sfHover span.topdaddy {
+	background: url(../images/activemenubg.gif) 0 0 repeat-x;
+}
+
+#horiz-menu li:hover span.topdaddy a,
+#horiz-menu li.sfHover span.topdaddy a {
+	background: url(../images/activemenubg.gif) 0 0 repeat-x;
+	color: #fff;
+}
+
+#horiz-menu li:hover ul, #horiz-menu li.sfHover ul {	background: #545454;}
+#horiz-menu li li:hover,
+#horiz-menu li li.sfHover {
+	background: #454545;
+}
+
+#horiz-menu li:hover li a.daddy,
+#horiz-menu li.sfHover li a.daddy,
+#horiz-menu li.active:hover li a.daddy,
+#horiz-menu li.active.sfHover li a.daddy {
+	background: url(../images/arrow.png) 100% 50% no-repeat;
+	font-size:1.0em;
+}
+
+
