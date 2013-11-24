@@ -18,11 +18,11 @@
                      <th align="left" width="90">Action</th>
                   </tr>
                   <?php 
-                     $count = 1;
+                     $count = $row_count*$current_page+1;
                      foreach($contactus as $item){
                   ?>
                   <tr>
-                     <td align="center"><?php echo $count++; ?></td>
+                     <td align="center"><?php echo $count; ?></td>
                      <td><?php echo $item->email; ?></td>
                      <td><?php echo $item->message; ?></td>
                      <td>
@@ -31,11 +31,11 @@
                       
                      </td>
                   </tr>
-                  <?php } ?>
+                  <?php $count++ ;} ?>
                   <tr>
-                     <td colspan="3"> <?php $this->widget('CLinkPager'/*, array(
-    'pages' => $pages,
-)*/) ?></td>
+                     <td colspan="3"> <?php $this->widget('CLinkPager', array(
+                              'pages' => $pages,)) ?>
+                     </td>
                      <td>
                         <a href="<?php echo Yii::app()->request->baseUrl ?>/admin/addContactUs">
                            <strong>Add New</strong>

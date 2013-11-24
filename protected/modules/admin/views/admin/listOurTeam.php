@@ -20,11 +20,11 @@
                      <th align="left" width="90">Action</th>
                   </tr>
                   <?php 
-                     $count = 1;
+                     $count = $row_count*$current_page+1;
                      foreach($ourteam as $item){
                   ?>
                   <tr>
-                     <td align="center"><?php echo $count++; ?></td>
+                     <td align="center"><?php echo $count; ?></td>
                      <td><?php echo $item->name; ?></td>                     
                      <td><a href="<?php echo Yii::app()->request->baseUrl.'/uploads/ourteam/'.$item->image; ?>" data-lightbox="image-1">
                            <?php echo CHtml::image(Yii::app()->baseUrl .'/uploads/ourteam/admin-thumbs/'.$item->image, 'ourteam')?></a></td>
@@ -39,11 +39,11 @@
                       
                      </td>
                   </tr>
-                  <?php } ?>
+                  <?php $count++; } ?>
                   <tr>
-                     <td colspan="5"> <?php $this->widget('CLinkPager'/*, array(
-    'pages' => $pages,
-)*/) ?></td>
+                     <td colspan="5"> <?php $this->widget('CLinkPager', array(
+                           'pages' => $pages,)) ?>
+                     </td>
                      <td>
                         <a href="<?php echo Yii::app()->request->baseUrl ?>/admin/addOurTeam">
                            <strong>Add New</strong>
