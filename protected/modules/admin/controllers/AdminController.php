@@ -64,8 +64,8 @@ class AdminController extends Controller {
          if(isset($_POST['AdminUser'])){
             $old_password = $_POST['AdminUser']['old_password'];
             $password = $_POST['AdminUser']['new_password'];
-            if($user->password == md5($old_password)){
-               $user->password = md5($password);
+            if($user->password == md5('weblitz!@#' .$old_password)){
+               $user->password = md5('weblitz!@#' .$password);
                $user->update();
                $data['success_msg'] = 'password change successfully.';
             }
@@ -88,6 +88,7 @@ class AdminController extends Controller {
           if(isset($_POST['AdminUser'])){
              $user->attributes = $_POST['AdminUser'];
              $user->update();
+             $data['success_msg'] = 'User information changed successfully.';
 
           }
           $data['user'] = $user;
